@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Setarea charset-ului pentru afișarea corectă a caracterelor -->
+    <meta charset="UTF-8">
+
+    <!-- Titlul paginii afișat în tab-ul browserului -->
+    <title>MPAI Spring MVC Demo</title>
+</head>
+<body>
+
+<!-- Text informativ pentru pagina de listare a studenților -->
+<p>This is MPAI Spring MVC Demo Students page</p>
+
+<!-- Titlu pentru lista de studenți -->
+<b>All registered students: </b>
+
+<!--
+ Listă de studenți
+ Momentan conține date statice (demo)
+-->
+<ul>
+
+    <!--
+     Element de listă care reprezintă un student
+     Conține:
+     - informații despre student
+     - buton de ștergere
+     - buton de editare
+    -->
+    <li style="display: flex; align-items: center; margin-bottom: 20px;">
+
+        <!--
+         Informații despre student:
+         ID - Nume - Vârstă
+        -->
+        <span>1 - Demo Name - 23</span>
+
+        <!--
+         Formular pentru ștergerea studentului
+         (logică neimplementată încă)
+        -->
+        <form method="post">
+            <button style="margin: 5px;" type="submit">
+                <i>Delete</i>
+            </button>
+        </form>
+
+        <!--
+         Formular pentru navigarea către pagina de editare student
+        -->
+        <form th:action="@{/students/edit}" method="get">
+            <button style="margin: 5px;" type="submit">
+                <i>Edit</i>
+            </button>
+        </form>
+
+    </li>
+</ul>
+
+<!-- Link pentru navigare către pagina de adăugare student -->
+<a th:href="@{/students/add}">
+    Add a new student
+</a>
+
+</body>
+</html>

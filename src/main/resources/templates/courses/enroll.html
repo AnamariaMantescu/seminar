@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Setarea charset-ului pentru afișarea corectă a caracterelor -->
+    <meta charset="UTF-8">
+
+    <!-- Titlul paginii afișat în browser -->
+    <title>MPAI Spring MVC Demo</title>
+</head>
+<body>
+
+<!-- Text informativ pentru pagina de înscriere student la curs -->
+<p>This is the MPAI Spring MVC - Enroll page</p>
+
+<!--
+ Formular pentru înscrierea unui student la un curs
+ Va trimite datele către controller prin POST
+-->
+<form method="post">
+
+    <!-- Label pentru câmpul de introducere a ID-ului studentului -->
+    <label for="studentID">
+        What is the student ID that you want to enroll?
+    </label>
+
+    <!--
+     Input pentru ID-ul studentului
+     name="studentId" va fi citit în controller prin @RequestParam
+    -->
+    <input id="studentID"
+           name="studentId"
+           type="number"/>
+
+    <!-- Buton de submit pentru trimiterea formularului -->
+    <button type="submit">
+        <i>Save</i>
+    </button>
+</form>
+
+<!-- Text informativ pentru lista de studenți disponibili -->
+<p>Available students</p>
+
+<!-- Tabel cu studenți disponibili (momentan date statice/demo) -->
+<table>
+
+    <!-- Antetul tabelului -->
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+
+    <!-- Corpul tabelului -->
+    <tbody>
+
+    <!-- Student demo 1 -->
+    <tr>
+        <td>1</td>
+        <td>Student name demo 1</td>
+    </tr>
+
+    <!-- Student demo 2 -->
+    <tr>
+        <td>2</td>
+        <td>Student name demo 2</td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

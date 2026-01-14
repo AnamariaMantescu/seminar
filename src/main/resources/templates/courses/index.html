@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Setarea charset-ului pentru suport corect UTF-8 -->
+    <meta charset="UTF-8">
+
+    <!-- Titlul paginii afișat în tab-ul browserului -->
+    <title>MPAI Spring MVC Demo</title>
+</head>
+<body>
+
+<!-- Text informativ pentru pagina de listare cursuri -->
+<p>This is the MPAI Spring MVC - courses page</p>
+
+<!-- Tabel pentru afișarea listei de cursuri -->
+<table>
+
+    <!-- Antetul tabelului -->
+    <thead>
+    <tr>
+        <!-- Coloane pentru butoanele de acțiune -->
+        <th></th>
+        <th></th>
+        <th></th>
+
+        <!-- Coloane pentru datele cursului -->
+        <th>ID</th>
+        <th>Title</th>
+        <th>Trainer</th>
+        <th>Description</th>
+        <th>Students</th>
+    </tr>
+    </thead>
+
+    <!-- Corpul tabelului -->
+    <tbody>
+
+    <!--
+     th:each parcurge lista "courses" primită din controller
+     pentru fiecare element se creează un rând (<tr>)
+    -->
+    <tr th:each="course : ${courses}">
+
+        <!-- BUTON EDIT COURSE -->
+        <td>
+            <!--
+             Formular GET pentru editarea cursului curent
+             URL generat dinamic: /courses/{id}/edit
+            -->
+            <form th:action="@{'courses/'+${course.id}+'/edit'}" method="get">
+                <button type="submit">Edit</button>
+            </form>
+        </td>
+
+        <!-- BUTON REMOVE COURSE (neimplementat complet) -->
+        <td>
+            <!--
+             Formular pentru ștergerea cursului
+             (momentan nu are action definit)
+            -->
+            <form method="post">
+                <button type="submit">Remove</button>
+            </form>
+        </td>
+
+        <!-- BUTON ENROLL STUDENT -->
+        <td>
+            <!--
+             Formular GET pentru navigare către pagina de înscriere student
+            -->
+            <form th:action="@{/courses/students/enroll}" method="get">
+                <button type="submit">Enroll student</button>
+            </form>
+        </td>
+
+        <!-- ID-ul cursului -->
+        <td th:text="${course.id}">1</td>
+
+        <!-- Titlul cursului -->
+        <td th:text="${course.title}">Demo title</td>
+
+        <!-- Trainer-ul cursului -->
+        <td th:text="${course.trainer}">Demo trainer</td>
+
+        <!-- Descrierea cursului -->
+        <td th:text="${course.description}">Demo description</td>
+
+        <!-- LISTA DE STUDENȚI AI CURSULUI -->
+        <td>
+            <ul>
+
+                <!--
+                 Parcurge lista de studenți a cursului curent
+                 course.students este List<StudentResponse>
+                -->
+                <li th:each="student : ${course.students}"
+                    style="display:flex; align-items: center; margin-bottom: 10px">
+
+                    <!-- Afișează numele studentului -->
+                    <label th:text="${student.name}">
+                        Student demo 1
+                    </label>
+
+                    <!--
+                     Buton pentru eliminarea studentului din curs
+                     (logică neimplementată încă)
+                    -->
+                    <form method="post">
+                        <button style="margin: 10px" type="submit">
+                            <i>X</i>
+                        </button>
+                    </form>
+
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<!-- Link pentru navigare către pagina de adăugare curs -->
+<a th:href="@{/courses/add}">
+    <i>Add a new course</i>
+</a>
+
+</body>
+</html>

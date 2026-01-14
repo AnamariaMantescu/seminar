@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>MPAI Spring MVC Demo</title>
+</head>
+<body>
+
+<!-- Text informativ pentru pagina ADD / EDIT -->
+<p>This is the MPAI Spring MVC - add/edit page</p>
+
+<!--
+ Formularul trimite datele prin POST către /courses/save
+-->
+<form th:action="@{/courses/save}" method="post">
+
+    <!--
+     Hidden input pentru ID-ul cursului
+     - la ADD -> course.id este null
+     - la EDIT -> course.id are valoare
+     Acest câmp decide dacă se face CREATE sau UPDATE
+    -->
+    <input type="hidden"
+           name="courseId"
+           th:value="${course!=null?course.id:null}"/>
+
+    <table>
+        <tbody>
+
+        <!-- TITLE -->
+        <tr>
+            <td>
+                <!-- Label pentru input-ul de titlu -->
+                <label for="courseTitle">Title</label>
+
+                <!--
+                 name="title" -> se mapează pe CourseRequest.title
+                 th:value:
+                   - EDIT -> valoarea existentă
+                   - ADD  -> string gol
+                -->
+                <input id="courseTitle"
+                       name="title"
+                       type="text"
+                       th:value="${course!=null?course.title:''}"/>
+            </td>
+        </tr>
+
+        <!-- TRAINER -->
+        <tr>
+            <td>
+                <label for="courseTrainer">Trainer</label>
+
+                <!--
+                 name="trainer" -> CourseRequest.trainer
+                 course nu e null pentru că este mereu pus în Model
+                -->
+                <input id="courseTrainer"
+                       name="trainer"
+                       type="text"
+                       th:value="${course.trainer}"/>
+            </td>
+        </tr>
+
+        <!-- DESCRIPTION -->
+        <tr>
+            <td>
+                <label for="courseDescription">Description</label>
+
+                <!--
+                 name="description" -> CourseRequest.description
+                -->
+                <input id="courseDescription"
+                       name="description"
+                       type="text"
+                       th:value="${course.description}"/>
+            </td>
+        </tr>
+
+        <!-- SUBMIT BUTTON -->
+        <tr>
+            <td>
+                <!--
+                 Butonul de submit
+                 Trimite formularul către controller
+                -->
+                <button type="submit">Save</button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</form>
+
+</body>
+</html>

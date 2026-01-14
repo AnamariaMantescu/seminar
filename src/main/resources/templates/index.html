@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Setarea charset-ului pentru afișarea corectă a caracterelor -->
+    <meta charset="UTF-8">
+
+    <!-- Titlul paginii afișat în tab-ul browserului -->
+    <title>MPAI Spring MVC Demo</title>
+</head>
+<body>
+
+<!-- Text informativ pentru pagina principală (Home) -->
+<p>This is MPAI Spring MVC - Home page</p>
+
+<!--
+ Link către pagina cu lista de studenți
+ th:href generează automat URL-ul /students
+-->
+<a th:href="@{/students}">
+    Students
+</a>
+
+<!--
+ Link către pagina cu lista de cursuri
+ th:href generează automat URL-ul /courses
+-->
+<a th:href="@{/courses}">
+    Courses
+</a>
+
+</body>
+</html>

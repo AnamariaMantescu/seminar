@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Setarea charset-ului pentru afișarea corectă a caracterelor -->
+    <meta charset="UTF-8">
+
+    <!-- Titlul paginii afișat în tab-ul browserului -->
+    <title>MPAI Spring MVC Demo</title>
+</head>
+<body>
+
+<!-- Text informativ pentru pagina de adăugare / editare student -->
+<p>This is MPAI Spring MVC Demo Student Insert/Edit page</p>
+
+<!--
+ Formular pentru ADD / EDIT student
+ Va trimite datele prin POST către controller
+-->
+<form method="post">
+
+    <!--
+     Hidden input pentru ID-ul studentului
+     - la ADD -> studentId este null
+     - la EDIT -> studentId are valoare
+    -->
+    <input type="hidden" name="studentId"/>
+
+    <table>
+        <tbody>
+
+        <!-- NAME -->
+        <tr>
+            <td>
+                <!-- Label pentru câmpul nume -->
+                <label for="studentName">Name</label>
+
+                <!--
+                 Input pentru numele studentului
+                 name="name" -> se mapează pe câmpul name din obiectul StudentRequest / StudentResponse
+                -->
+                <input id="studentName"
+                       name="name"
+                       type="text"/>
+            </td>
+        </tr>
+
+        <!-- AGE -->
+        <tr>
+            <td>
+                <!-- Label pentru câmpul vârstă -->
+                <label for="studentAge">Age</label>
+
+                <!--
+                 Input pentru vârsta studentului
+                 name="age" -> se mapează pe câmpul age din obiectul StudentRequest
+                -->
+                <input id="studentAge"
+                       name="age"
+                       type="number"/>
+            </td>
+        </tr>
+
+        <!-- SUBMIT -->
+        <tr>
+            <td>
+                <!--
+                 Buton de submit
+                 Trimite formularul către controller
+                -->
+                <input type="submit" value="Save"/>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</form>
+
+</body>
+</html>
