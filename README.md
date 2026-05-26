@@ -1,1 +1,1 @@
-am nevoie de 1
+rezolvare 1
